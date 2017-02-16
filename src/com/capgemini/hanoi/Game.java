@@ -31,11 +31,11 @@ public class Game {
 	private void drawTower(){
 		System.out.println("Kolejny ruch");
 		System.out.println("Wieza nr 0");
-		tower[0].StanWiezy();
+		tower[0].towerState();
 		System.out.println("Wieza nr 1");
-		tower[1].StanWiezy();
+		tower[1].towerState();
 		System.out.println("Wieza nr 2");
-		tower[2].StanWiezy();
+		tower[2].towerState();
 		System.out.println("");System.out.println("");
 	}
 	private void setTower(){
@@ -72,17 +72,22 @@ public class Game {
 			System.out.println("Pusta wieza");
 			throw new IllegalStateException();
 		}else if(tower[to].getAmountOfDisc()>0 && 
-				tower[from].GetPierwszyKrazek().getSize()>=tower[to].GetPierwszyKrazek().getSize()){
+				tower[from].getFirstDisc().getSize()>=tower[to].getFirstDisc().getSize()){
 			System.out.println("Nie wolno klasc wiekszego na mniejszy");
 			throw new IllegalStateException();
 		}else {
 			tower[to].addDisc(tower[from].deleteDisc());	
 		}
 	}
-	public void solveGame(){
-		
+	private int whereSmallestDisc(){
+		int whereSmallestDisc=0;
+		for (int i=0;i<3;i++){
+			if (tower[i].getFirstDisc().getSize()==1){
+				whereSmallestDisc=i;
+			}
+		}
+		return whereSmallestDisc;
 	}
-	
 	public static void main(String[] args) {
 		int choice=0;
 		int movements=0;

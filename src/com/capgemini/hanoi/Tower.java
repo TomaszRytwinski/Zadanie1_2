@@ -16,7 +16,7 @@ public class Tower {
 		list.remove(0);
 		return temp;
 	}
-	public void StanWiezy(){
+	public void towerState(){
 		for(int i=0;i<list.size();i++){
 			System.out.println(i + " " + list.get(i).getSize());
 		}
@@ -28,7 +28,7 @@ public class Tower {
 	public int getSizeofDisc(int index){
 		return list.get(index).getSize();
 	}
-	public Disc GetPierwszyKrazek(){
+	public Disc getFirstDisc(){
 		return list.get(0);
 	}
 }
